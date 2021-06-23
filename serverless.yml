@@ -20,14 +20,6 @@ resources:
     NotesAPITable: ${file(infra/resources/NotesAPITable.yml):NotesAPITable}
 
 functions:
-  hello:
-    handler: src/handlers/hello.handler
-    events:
-      - http:
-          method: GET
-          path: /hello
-          cors: true
-
   addNote:
     handler: src/handlers/addNote.handler
     events:

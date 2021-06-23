@@ -9,3 +9,4 @@ NotesAPITableIAM:
     - dynamodb:DeleteItem
   Resource:
     - ${self:custom.NotesAPITable.arn}
+    - !Join ['/', ['${self:custom.NotesAPITable.arn}', 'index', 'createdDate']]
