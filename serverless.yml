@@ -36,6 +36,14 @@ functions:
           path: /note
           cors: true
 
+  getNote:
+    handler: src/handlers/getNote.handler
+    events:
+      - http:
+          method: GET
+          path: /note/{id}
+          cors: true
+
 custom:
   NotesAPITable:
     name: !Ref NotesAPITable
