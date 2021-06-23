@@ -10,6 +10,12 @@ provider:
   memorySize: 256
   stage: ${opt:stage, 'dev'}
   region: ap-southeast-1
+  iamRoleStatements:
+    - ${file(infra/iam/NotesAPITableIAM.yml):NotesAPITableIAM}
+
+resources:
+  Resources:
+    NotesAPITable: ${file(infra/resources/NotesAPITable.yml):NotesAPITable}
 
 functions:
   hello:
@@ -18,3 +24,10 @@ functions:
       - http:
           method: GET
           path: /hello
+
+custom:
+  NotesAPITable:
+    name: !Ref NotesAPITable
+    arn: !GetAtt NotesAPITable.Arn
+  bundle:
+    linting: false
