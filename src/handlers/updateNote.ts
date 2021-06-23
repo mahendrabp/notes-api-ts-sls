@@ -13,15 +13,17 @@ async function updateNote(event: any) {
   }
 
   const data: any = JSON.parse(event.body);
+  const updatedDate: string = new Date().toISOString();
 
   const params: DynamoDB.DocumentClient.Update = {
     TableName: process.env.NOTES_API_TABLE_NAME as string,
     Key: {
       noteId: event.pathParameters.id,
     },
-    UpdateExpression: 'SET content = :content',
+    UpdateExpression: 'SET content = :content, updatedDate = :updatedDate',
     ExpressionAttributeValues: {
       ':content': data.content || '',
+      ':updatedDate': updatedDate || '',
     },
     ReturnValuesOnConditionCheckFailure: 'ALL_NEW',
   };

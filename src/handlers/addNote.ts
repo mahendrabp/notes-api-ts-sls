@@ -5,9 +5,11 @@ import { v4 as uuid } from 'uuid';
 const dynamoDB = new DynamoDB.DocumentClient();
 
 interface NoteModel {
+  userId: string;
   noteId: string;
   content: string;
   createdAt: string;
+  updatedDate: string;
 }
 
 async function addNote(event: any) {
@@ -15,12 +17,18 @@ async function addNote(event: any) {
     throw new createError.BadRequest('Event body must be provided');
   }
 
+  console.log(event.requestContext.authorizer);
+
+  const { email } = event.requestContext.authorizer;
+
   const data: any = JSON.parse(event.body);
 
   const note: NoteModel = {
+    userId: email,
     noteId: uuid(),
     content: data.content,
     createdAt: new Date().toISOString(),
+    updatedDate: new Date().toISOString(),
   };
 
   const params: DynamoDB.DocumentClient.PutItemInput = {
