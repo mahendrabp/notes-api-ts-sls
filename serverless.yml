@@ -44,6 +44,14 @@ functions:
           path: /note/{id}
           cors: true
 
+  updateNote:
+    handler: src/handlers/updateNote.handler
+    events:
+      - http:
+          method: PATCH
+          path: /note/{id}/update
+          cors: true
+
 custom:
   NotesAPITable:
     name: !Ref NotesAPITable
