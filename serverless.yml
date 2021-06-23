@@ -52,6 +52,14 @@ functions:
           path: /note/{id}/update
           cors: true
 
+  deleteNote:
+    handler: src/handlers/deleteNote.handler
+    events:
+      - http:
+          method: DELETE
+          path: /note/{id}
+          cors: true
+
 custom:
   NotesAPITable:
     name: !Ref NotesAPITable
