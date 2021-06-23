@@ -1,0 +1,3 @@
+- install serverless framework on your machine
+- `npm install` on this folder directory
+- sls deploy -v --stage dev

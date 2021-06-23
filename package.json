@@ -1,0 +1,29 @@
+{
+  "name": "notes-api-ts-sls",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Mahendra Bimantara Putra",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.59",
+    "@types/aws-sdk": "^2.7.0",
+    "@types/http-errors": "^1.8.0",
+    "@types/jest": "^26.0.8",
+    "@types/uuid": "^8.0.1",
+    "aws-lambda": "^1.0.6",
+    "aws-sdk": "^2.725.0",
+    "lint-staged": "^10.2.11",
+    "serverless-bundle": "^2.0.0",
+    "serverless-pseudo-parameters": "^2.5.0",
+    "serverless-dotenv-plugin": "^2.1.1",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "http-errors": "^1.8.0",
+    "uuid": "^7.0.3"
+  }
+}
