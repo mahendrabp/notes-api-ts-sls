@@ -4,8 +4,8 @@ NotesAPITable:
     TableName: NotesAPITable-${self:provider.stage}
     BillingMode: PAY_PER_REQUEST
     AttributeDefinitions:
-      - AttributeName: id
+      - AttributeName: noteId
         AttributeType: S
     KeySchema:
-      - AttributeName: id
+      - AttributeName: noteId
         KeyType: HASH

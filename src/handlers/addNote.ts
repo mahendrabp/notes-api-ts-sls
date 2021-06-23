@@ -7,7 +7,7 @@ const dynamoDB = new DynamoDB.DocumentClient();
 interface NoteModel {
   noteId: string;
   content: string;
-  createdAt: number;
+  createdAt: Date;
 }
 
 async function addNote(event: any) {
@@ -20,7 +20,7 @@ async function addNote(event: any) {
   const note: NoteModel = {
     noteId: uuid(),
     content: data.content,
-    createdAt: Date.now(),
+    createdAt: new Date(),
   };
 
   const params: DynamoDB.DocumentClient.PutItemInput = {
@@ -34,6 +34,11 @@ async function addNote(event: any) {
     console.error(error);
     throw new createError.InternalServerError(error);
   }
+
+  return {
+    statusCode: 201,
+    body: JSON.stringify(note),
+  };
 }
 
 export const handler = addNote;

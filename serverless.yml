@@ -10,6 +10,8 @@ provider:
   memorySize: 256
   stage: ${opt:stage, 'dev'}
   region: ap-southeast-1
+  environment:
+    NOTES_API_TABLE_NAME: ${self:custom.NotesAPITable.name}
   iamRoleStatements:
     - ${file(infra/iam/NotesAPITableIAM.yml):NotesAPITableIAM}
 
