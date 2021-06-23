@@ -27,6 +27,7 @@ functions:
           method: POST
           path: /note
           cors: true
+          authorizer: ${self:custom.authorizer}
 
   getNote:
     handler: src/handlers/getNote.handler
@@ -35,6 +36,7 @@ functions:
           method: GET
           path: /note/{id}
           cors: true
+          authorizer: ${self:custom.authorizer}
 
   updateNote:
     handler: src/handlers/updateNote.handler
@@ -43,6 +45,7 @@ functions:
           method: PATCH
           path: /note/{id}/update
           cors: true
+          authorizer: ${self:custom.authorizer}
 
   deleteNote:
     handler: src/handlers/deleteNote.handler
@@ -51,8 +54,10 @@ functions:
           method: DELETE
           path: /note/{id}
           cors: true
+          authorizer: ${self:custom.authorizer}
 
 custom:
+  authorizer: arn:aws:lambda:#{AWS::Region}:#{AWS::AccountId}:function:auth-service-${self:provider.stage}-auth
   NotesAPITable:
     name: !Ref NotesAPITable
     arn: !GetAtt NotesAPITable.Arn
