@@ -24,6 +24,15 @@ functions:
       - http:
           method: GET
           path: /hello
+          cors: true
+
+  addNote:
+    handler: src/handlers/addNote.handler
+    events:
+      - http:
+          method: POST
+          path: /note
+          cors: true
 
 custom:
   NotesAPITable:
